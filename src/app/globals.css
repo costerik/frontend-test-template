@@ -2,3 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --color-surface-secondary: rgba(238, 238, 238, 1); /* #EEEEEE */
+    --color-text-primary: rgba(59, 59, 59, 1); /* #3B3B3B */
+    --color-cta-fill-primary: rgba(88, 86, 96, 1); /* #585660 */
+  }
+}
