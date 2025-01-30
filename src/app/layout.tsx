@@ -1,12 +1,14 @@
-import type { Metadata } from "next";
-import { Archivo } from "next/font/google";
-import "./globals.css";
+import './globals.css';
+import type { Metadata } from 'next';
+import { Archivo } from 'next/font/google';
+import Header from '@/components/Header/Header';
+import Footer from '@/components/Footer/Footer';
 
-const archivo = Archivo({ subsets: ["latin"], variable: "--font-archivo" });
+const archivo = Archivo({ subsets: ['latin'], variable: '--font-archivo' });
 
 export const metadata: Metadata = {
-  title: "Apply Digital Test",
-  description: "Frontend development test for Apply Digital",
+  title: 'Apply Digital Test',
+  description: 'Frontend development test for Apply Digital',
 };
 
 export default function RootLayout({
@@ -16,8 +18,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${archivo.className} ${archivo.variable}`}>
+      <body
+        className={`${archivo.className} ${archivo.variable} grid h-screen grid-rows-[auto_1fr_auto]`}
+      >
+        <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );
