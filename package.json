@@ -4,9 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npm run build:icons && next build",
+    "build:icons": "tsx ./build-icons.mts --log=verbose",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "next": "14.2.4",
@@ -14,14 +17,27 @@
     "react-dom": "18.3.1"
   },
   "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
     "@types/node": "20.14.8",
     "@types/react": "18.3.3",
     "@types/react-dom": "18.3.0",
+    "@typescript-eslint/eslint-plugin": "^6.19.0",
+    "@typescript-eslint/parser": "^6.19.0",
     "autoprefixer": "^10.0.1",
-    "eslint": "^8",
-    "eslint-config-next": "14.1.4",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "^15.1.6",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-prettier": "^5.2.3",
+    "execa": "^9.5.2",
+    "fs-extra": "^11.3.0",
+    "glob": "^11.0.1",
+    "node-html-parser": "^7.0.1",
     "postcss": "^8",
+    "prettier": "^3.4.2",
+    "prettier-plugin-tailwindcss": "^0.6.11",
+    "tailwind-merge": "^2.6.0",
     "tailwindcss": "^3.4.4",
-    "typescript": "^5"
+    "tsx": "^4.19.2",
+    "typescript": ">=4.3.5 <5.4.0"
   }
 }

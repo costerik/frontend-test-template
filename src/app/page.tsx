@@ -1,7 +1,7 @@
 export default async function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24 font-bold text-4xl text-gray-750">
-      Hello, world!
+    <main className="overflow-y-auto">
+      <p>Hello world</p>
     </main>
   );
 }
