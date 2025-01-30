@@ -7,5 +7,6 @@
     --color-surface-secondary: rgba(238, 238, 238, 1); /* #EEEEEE */
     --color-text-primary: rgba(59, 59, 59, 1); /* #3B3B3B */
     --color-cta-fill-primary: rgba(88, 86, 96, 1); /* #585660 */
+    --color-stroke-tertiary: rgba(239, 237, 243, 1); /* #EFEDF3 */
   }
 }

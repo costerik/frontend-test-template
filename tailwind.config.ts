@@ -18,6 +18,7 @@ const config: Config = {
       },
       colors: {
         gray: {
+          101: 'var(--color-stroke-tertiary)',
           150: 'var(--color-surface-secondary)',
           650: 'var(--color-cta-fill-primary)',
           750: 'var(--color-text-primary)',
