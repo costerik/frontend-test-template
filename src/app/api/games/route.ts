@@ -1,6 +1,13 @@
-import { allGames, availableFilters, delay } from '@/utils/endpoint';
+import { type Game, allGames, availableFilters, delay } from '@/utils/endpoint';
 
 const ITEMS_PER_PAGE = 12;
+
+export type GetGamesResponse = {
+  games: Game[];
+  availableFilters: string[];
+  totalPages: number;
+  currentPage: number;
+};
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
@@ -27,5 +34,12 @@ export async function GET(request: Request) {
   const totalPages = Math.ceil(allGames.length / ITEMS_PER_PAGE);
   const currentPage = page;
 
-  return Response.json({ games, availableFilters, totalPages, currentPage });
+  const response: GetGamesResponse = {
+    games,
+    availableFilters,
+    totalPages,
+    currentPage,
+  };
+
+  return Response.json(response);
 }
