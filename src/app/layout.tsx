@@ -22,7 +22,7 @@ export default function RootLayout({
         className={`${archivo.className} ${archivo.variable} grid h-screen grid-rows-[auto_1fr_auto]`}
       >
         <Header />
-        <div className="mx-6">{children}</div>
+        <main className="overflow-y-auto px-6 2xl:px-0">{children}</main>
         <Footer />
       </body>
     </html>

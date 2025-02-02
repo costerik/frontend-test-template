@@ -1,9 +1,11 @@
+'use client';
 import { ButtonProps } from '@/components/Button/types';
 import { classnames } from '@/utils/helpers/styles';
 
 const className = {
-  'fill-primary': 'bg-gray-650 text-white',
-  'unfill-secondary': 'bg-transparent text-gray-750 border-gray-750 border',
+  'fill-primary': 'bg-gray-650 text-white font-bold',
+  'unfill-secondary':
+    'bg-transparent text-gray-750 border-gray-750 border font-bold',
 };
 
 const Button = (props: ButtonProps) => {

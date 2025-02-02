@@ -1,6 +1,6 @@
 import { type SVGProps } from 'react';
 
-import { IconName } from '@/components/Icon/types';
+import { IconName } from '@/components/Icon/Icon.types';
 import { classnames } from '@/utils/helpers/styles';
 
 export type IconProps = SVGProps<SVGSVGElement> & {

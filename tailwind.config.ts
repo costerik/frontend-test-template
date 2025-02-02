@@ -13,6 +13,12 @@ const config: Config = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      container: {
+        center: true,
+        screens: {
+          '2xl': '1280px',
+        },
+      },
       fontFamily: {
         archivo: 'var(--font-archivo)',
       },
@@ -20,6 +26,7 @@ const config: Config = {
         gray: {
           101: 'var(--color-stroke-tertiary)',
           150: 'var(--color-surface-secondary)',
+          450: 'var(--color-stroke-secondary)',
           650: 'var(--color-cta-fill-primary)',
           750: 'var(--color-text-primary)',
         },

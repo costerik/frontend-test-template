@@ -9,7 +9,7 @@ const Filter = (props: FilterProps) => {
   const filterId = useId();
 
   return (
-    <div className="mb-8 flex h-14 items-center justify-center gap-x-6 text-xl text-gray-750">
+    <div className="mb-8 flex h-14 items-center gap-x-6 text-xl text-gray-750 2xl:mb-12 2xl:justify-end">
       <label className="font-bold" htmlFor={filterId}>
         {label}
       </label>
@@ -17,7 +17,7 @@ const Filter = (props: FilterProps) => {
       <select
         name={label}
         id={filterId}
-        className="flex-1"
+        className="flex-1 2xl:max-w-60"
         onChange={(e) => {
           onChange?.(e.target.value);
           const params = new URLSearchParams(window.location.search);

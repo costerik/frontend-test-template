@@ -1,4 +1,8 @@
+import Card from '@/components/Card/Card';
+import { CardProps } from '@/components/Card/Card.types';
 import Filter from '@/components/Filter/Filter';
+import List from '@/components/List/List';
+import ListFooter from '@/components/List/ListFooter';
 import { getGames } from '@/services/games';
 import { availableFilters } from '@/utils/endpoint';
 availableFilters.unshift('All');
@@ -22,15 +26,20 @@ export default async function Home({ searchParams }: HomeProps) {
   });
 
   return (
-    <main className="overflow-y-auto">
-      <h1 className="my-8 text-2xl font-bold uppercase text-gray-750">
+    <div className="2xl:container">
+      <h1 className="my-8 text-2xl font-bold uppercase text-gray-750 2xl:my-12 2xl:text-4xl">
         Top Sellers
       </h1>
       <Filter label="Genre" options={filters} />
-      <div className="fixed left-0 w-screen border-b border-gray-101"></div>
-      <ul>
-        {response?.games.map((game) => <li key={game.id}>{game.name}</li>)}
-      </ul>
-    </main>
+      <div className="ml-[calc(-50vw+_50%)] w-screen border-b border-gray-101"></div>
+      <List<CardProps>
+        data={response?.games || []}
+        keyExtractor={(item) => item.id}
+        renderItem={(item) => {
+          return <Card {...item} />;
+        }}
+        Footer={ListFooter}
+      />
+    </div>
   );
 }
