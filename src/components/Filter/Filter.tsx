@@ -1,5 +1,5 @@
 'use client';
-import { FilterProps } from '@/components/Filter/types';
+import { FilterProps } from '@/components/Filter/Filter.types';
 import { useRouter } from 'next/navigation';
 import { useId } from 'react';
 
