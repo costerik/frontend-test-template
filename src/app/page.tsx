@@ -1,11 +1,7 @@
-import Card from '@/components/Card/Card';
-import { CardProps } from '@/components/Card/Card.types';
 import Filter from '@/components/Filter/Filter';
-import List from '@/components/List/List';
-import ListFooter from '@/components/List/ListFooter';
+import ListServer from '@/components/List/List.server';
 import { getGames } from '@/services/games';
 import { availableFilters } from '@/utils/endpoint';
-availableFilters.unshift('All');
 
 type HomeProps = {
   searchParams: {
@@ -15,7 +11,7 @@ type HomeProps = {
 };
 
 export default async function Home({ searchParams }: HomeProps) {
-  const filters = availableFilters.map((filter) => ({
+  const filters = ['All', ...availableFilters].map((filter) => ({
     label: filter,
     value: filter,
   }));
@@ -32,14 +28,7 @@ export default async function Home({ searchParams }: HomeProps) {
       </h1>
       <Filter label="Genre" options={filters} />
       <div className="ml-[calc(-50vw+_50%)] w-screen border-b border-gray-101"></div>
-      <List<CardProps>
-        data={response?.games || []}
-        keyExtractor={(item) => item.id}
-        renderItem={(item) => {
-          return <Card {...item} />;
-        }}
-        Footer={ListFooter}
-      />
+      <ListServer data={response?.games || []} />
     </div>
   );
 }

@@ -1,4 +1,8 @@
+'use client';
 import { ListProps } from '@/components/List/List.types';
+import { useListPagination } from '@/contexts/ListPagination/ListPagination';
+import { ListPaginationInternalState } from '@/contexts/ListPagination/ListPagination.types';
+import Spinner from '@/components/Spinner/Spinner';
 import { classnames } from '@/utils/helpers/styles';
 
 const List = <T,>({
@@ -8,6 +12,7 @@ const List = <T,>({
   className,
   Footer,
 }: ListProps<T>) => {
+  const { state } = useListPagination();
   return (
     <>
       <ul
@@ -22,7 +27,11 @@ const List = <T,>({
       </ul>
       {Footer && (
         <div className="mb-6">
-          <Footer />
+          {state.state === ListPaginationInternalState.LOADING ? (
+            <Spinner />
+          ) : (
+            <Footer />
+          )}
         </div>
       )}
     </>
