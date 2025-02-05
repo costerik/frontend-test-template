@@ -4,7 +4,6 @@ import { Archivo } from 'next/font/google';
 import Header from '@/components/Header/Header';
 import Footer from '@/components/Footer/Footer';
 import Providers from '@/app/providers';
-import { Suspense } from 'react';
 
 const archivo = Archivo({ subsets: ['latin'], variable: '--font-archivo' });
 
@@ -23,13 +22,11 @@ export default function RootLayout({
       <body
         className={`${archivo.className} ${archivo.variable} grid h-screen grid-rows-[auto_1fr_auto]`}
       >
-        <Suspense fallback={<div>Loading...</div>}>
-          <Providers>
-            <Header />
-            <main className="overflow-y-auto px-6 2xl:px-0">{children}</main>
-            <Footer />
-          </Providers>
-        </Suspense>
+        <Providers>
+          <Header />
+          <main className="overflow-y-auto px-6 2xl:px-0">{children}</main>
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

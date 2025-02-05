@@ -6,4 +6,5 @@ export type ListProps<T = unknown> = {
   keyExtractor: (arg: T) => string;
   renderItem: (arg: T) => ReactNode;
   Footer?: () => ReactNode;
+  loading?: boolean;
 };

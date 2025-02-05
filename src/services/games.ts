@@ -25,7 +25,6 @@ export const getGames = async (params?: GetGamesParams) => {
     }
 
     const url = `${baseUrl}/api/games`;
-    console.log('URL', url);
     const response: Response = await fetch(
       `${url}${queryParams.size ? `?${queryParams.toString()}` : ''}`,
       {

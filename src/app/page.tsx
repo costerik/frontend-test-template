@@ -1,5 +1,6 @@
-import Filter from '@/components/Filter/Filter';
-import ListServer from '@/components/List/List.server';
+import Providers from '@/app/providers';
+import FilterServer from '@/components/Filter/Filter.server';
+import GamesListServer from '@/components/GamesList/GamesList.server';
 import { getGames } from '@/services/games';
 import { availableFilters } from '@/utils/endpoint';
 
@@ -26,9 +27,11 @@ export default async function Home({ searchParams }: HomeProps) {
       <h1 className="my-8 text-2xl font-bold uppercase text-gray-750 2xl:my-12 2xl:text-4xl">
         Top Sellers
       </h1>
-      <Filter label="Genre" options={filters} />
       <div className="ml-[calc(-50vw+_50%)] w-screen border-b border-gray-101"></div>
-      <ListServer data={response?.games || []} />
+      <Providers>
+        <FilterServer label="Genre" options={filters} />
+        <GamesListServer data={response?.games || []} />
+      </Providers>
     </div>
   );
 }

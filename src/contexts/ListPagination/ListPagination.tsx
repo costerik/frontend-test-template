@@ -16,7 +16,6 @@ import {
   ListPaginationInternalState,
 } from '@/contexts/ListPagination/ListPagination.types';
 import { GetGamesParams, getGames } from '@/services/games';
-import { useSearchParams } from 'next/navigation';
 
 const listPaginationInitialState: ListPaginationState = {
   page: 1,
@@ -37,14 +36,13 @@ const listPaginationReducer = (
         state: ListPaginationInternalState.LOADING,
         error: null,
       };
-    case ListPaginationActionsTypes.SUCCESS: {
+    case ListPaginationActionsTypes.SUCCESS:
       return {
         ...state,
         ...action.payload,
         data: [...state.data, ...action.payload.data],
         state: ListPaginationInternalState.IDLE,
       };
-    }
     case ListPaginationActionsTypes.ERROR:
       return {
         ...state,
@@ -67,9 +65,6 @@ export function ListPaginationProvider({ children }: { children: ReactNode }) {
     listPaginationReducer,
     listPaginationInitialState,
   );
-
-  const searchParams = useSearchParams();
-  const genre = searchParams.get('genre');
 
   const reset = useCallback(() => {
     dispatch({ type: ListPaginationActionsTypes.RESET });
@@ -97,10 +92,13 @@ export function ListPaginationProvider({ children }: { children: ReactNode }) {
   }, []);
 
   useEffect(() => {
+    const url = new URLSearchParams(window.location.search);
+    const genre = url.get('genre');
+
     fetchGames({
       genre: genre ?? undefined,
     });
-  }, [fetchGames, genre]);
+  }, [fetchGames]);
 
   return (
     <ListPaginationContext.Provider
