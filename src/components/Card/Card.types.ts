@@ -1,3 +1,11 @@
 import { Game } from '@/utils/endpoint';
 
-export type CardProps = Game;
+export enum CardVariants {
+  CATALOG = 'CATALOG',
+  CART = 'CART',
+}
+
+export type CardProps = Game & {
+  variant?: CardVariants;
+  className?: string;
+};

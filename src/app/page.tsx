@@ -27,9 +27,9 @@ export default async function Home({ searchParams }: HomeProps) {
       <h1 className="my-8 text-2xl font-bold uppercase text-gray-750 2xl:my-12 2xl:text-4xl">
         Top Sellers
       </h1>
-      <div className="ml-[calc(-50vw+_50%)] w-screen border-b border-gray-101"></div>
       <Providers>
         <Filter label="Genre" options={filters} />
+        <div className="ml-[calc(-50vw+_50%)] w-screen border-b border-gray-101"></div>
         <GamesList data={response?.games || []} />
       </Providers>
     </div>
