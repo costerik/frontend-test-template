@@ -14,22 +14,24 @@ const OrderSummary = ({ items, className }: OrderSummaryProps) => {
             Order Summary
           </p>
           <p className="text-lg text-gray-750">
-            {items.length} item{items.length > 1 ? 's' : ''}
+            {items.length} item{items.length === 1 ? '' : 's'}
           </p>
         </div>
         <div className="pt-6 2xl:pt-8">
-          <ul className="flex flex-col gap-y-3 border-b border-b-gray-101 py-5">
-            {items.map((item) => {
-              return (
-                <li key={item.id} className="text-lg text-gray-750">
-                  <p className="flex justify-between">
-                    <span className="flex-1">{item.name}</span>
-                    <span>$ {item.price}</span>
-                  </p>
-                </li>
-              );
-            })}
-          </ul>
+          {items.length && (
+            <ul className="flex flex-col gap-y-3 border-b border-b-gray-101 py-5">
+              {items.map((item) => {
+                return (
+                  <li key={item.id} className="text-lg text-gray-750">
+                    <p className="flex justify-between">
+                      <span className="flex-1">{item.name}</span>
+                      <span>$ {item.price}</span>
+                    </p>
+                  </li>
+                );
+              })}
+            </ul>
+          )}
           <p className="flex justify-between py-5 text-xl font-bold">
             <span>Order Total</span>
             <span>$ {total}</span>

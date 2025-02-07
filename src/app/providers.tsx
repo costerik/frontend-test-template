@@ -1,5 +1,6 @@
 'use client';
 
+import { CartProvider } from '@/contexts/Cart/Cart';
 import { ListPaginationProvider } from '@/contexts/ListPagination/ListPagination';
 import { ReactNode } from 'react';
 
@@ -8,7 +9,11 @@ type ProvidersProps = {
 };
 
 const Providers = ({ children }: ProvidersProps) => {
-  return <ListPaginationProvider>{children}</ListPaginationProvider>;
+  return (
+    <ListPaginationProvider>
+      <CartProvider>{children}</CartProvider>
+    </ListPaginationProvider>
+  );
 };
 
 export default Providers;
