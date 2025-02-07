@@ -18,14 +18,23 @@ const Card = ({
   return (
     <div
       className={classnames(
-        `flex h-full flex-col justify-between p-6 ${isCatalog ? 'rounded-2xl border border-gray-450' : 'px-4 py-5'}`,
+        `flex h-full flex-col justify-between p-6`,
+        isCatalog ? 'rounded-2xl border border-gray-450' : 'px-4 py-5',
         className,
       )}
     >
-      <div>
-        <div className={`${isCart ? 'flex gap-x-4' : ''}`}>
+      <div
+        className={classnames(
+          'flex flex-col',
+          isCart ? '2xl:flex-row 2xl:gap-x-6' : '',
+        )}
+      >
+        <div className={`${isCart ? 'flex gap-x-4 2xl:flex-1' : ''}`}>
           <div
-            className={`relative w-full overflow-hidden rounded-t-2xl ${isCatalog ? 'h-60' : 'h-32'}`}
+            className={classnames(
+              'relative w-full overflow-hidden rounded-t-2xl',
+              isCatalog ? 'h-60' : 'h-32 rounded-t-none 2xl:h-full',
+            )}
           >
             <Image
               src={image}
@@ -37,12 +46,12 @@ const Card = ({
             />
           </div>
           {isCart && (
-            <span className="cursor-pointer">
+            <span className="cursor-pointer 2xl:hidden">
               <Icon name="close" className="size-3 text-gray-450" />
             </span>
           )}
         </div>
-        <div className={`py-5 ${isCart ? 'pb-0' : ''}`}>
+        <div className={classnames('py-5', isCart ? 'pb-0 2xl:flex-1' : '')}>
           <p className="pb-3 font-bold text-neutral-500">{genre}</p>
           <p className="flex justify-between text-lg font-bold text-gray-750">
             <span>{name}</span>
@@ -57,6 +66,11 @@ const Card = ({
             </div>
           )}
         </div>
+        {isCart && (
+          <span className="hidden cursor-pointer 2xl:block">
+            <Icon name="close" className="size-3 text-gray-450" />
+          </span>
+        )}
       </div>
       {isCatalog && <Button variant="unfill-secondary">ADD TO CART</Button>}
     </div>
