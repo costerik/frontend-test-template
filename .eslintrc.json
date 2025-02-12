@@ -1,12 +1,21 @@
 {
   "extends": [
-    "next/core-web-vitals",
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended"
+    "next/core-web-vitals",
+    "plugin:testing-library/react",
+    "plugin:jest-dom/recommended",
+    "plugin:@vitest/legacy-recommended",
+    "prettier"
   ],
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint", "prettier"],
+  "plugins": [
+    "@typescript-eslint",
+    "testing-library",
+    "jest-dom",
+    "@vitest",
+    "prettier"
+  ],
   "rules": {
     "prettier/prettier": ["error"],
     "@typescript-eslint/no-unused-vars": ["warn"],
